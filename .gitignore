@@ -1,0 +1,4 @@
+*.ppm
+obj/
+.vscode/
+main
