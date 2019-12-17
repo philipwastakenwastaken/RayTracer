@@ -19,9 +19,9 @@ trace::vec3 color(const trace::Ray& r) {
 }
 
 int main() {
-    trace::RenderEngine engine;
+    trace::RenderEngine* engine = new trace::RenderEngine();
     
-    trace::Scene& scene = engine.tracer.get_scene();
+    trace::Scene& scene = engine->tracer.get_scene();
 
     trace::Sphere s1(trace::vec3(-1.0, 0.0, -1.0f), 0.25);
 
@@ -69,7 +69,7 @@ int main() {
 
     trace::vec3 i(8.0f);
     trace::vec3 pos(-1.0f, 1.5f, -1.0f);
-    trace::PointLight light(&engine.tracer, i, pos);
+    trace::PointLight light(&engine->tracer, i, pos);
 
 
     scene.add_primitive(s1);
@@ -77,16 +77,16 @@ int main() {
     scene.add_primitive(s3);
     scene.add_light(light);
 
-    scene.shaders[0]->tracer = &engine.tracer;
-    scene.shaders[1]->tracer = &engine.tracer;
+    scene.shaders[0]->tracer = &engine->tracer;
+    scene.shaders[1]->tracer = &engine->tracer;
 
     scene.shaders[0]->scene = &scene;
     scene.shaders[1]->scene = &scene;
 
-    engine.render();
+    engine->render();
 
 
-
+    system("pause");
 
     return 0;
 }

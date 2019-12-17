@@ -2,3 +2,5 @@
 obj/
 .vscode/
 main
+x64/
+.vs/

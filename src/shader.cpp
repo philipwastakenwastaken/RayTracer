@@ -1,6 +1,7 @@
 #include "shader.h"
 #include "ray_tracer.h"
 #include "scene.h"
+#include "sampler.h"
 
 
 namespace trace {
